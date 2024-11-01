@@ -29,3 +29,17 @@ document.addEventListener("click", function (e) {
     searchForm.classList.remove("active");
   }
 });
+
+function searchItems() {
+  const input = document.getElementById("search-box").value.toLowerCase();
+  const cards = document.getElementsByClassName("menu-card");
+
+  for (let i = 0; i < cards.length; i++) {
+    const cardText = cards[i].textContent.toLowerCase();
+    if (cardText.indexOf(input) > -1) {
+      cards[i].style.display = ""; // Tampilkan card
+    } else {
+      cards[i].style.display = "none"; // Sembunyikan card
+    }
+  }
+}
