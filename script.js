@@ -1,4 +1,4 @@
-// Toggle class active untuk hamburger menu
+ // Toggle class active untuk hamburger menu
 const navbarNav = document.querySelector(".navbar-nav");
 
 // ketika hamburger menu di klik
@@ -16,10 +16,18 @@ document.querySelector("#search-button").onclick = (e) => {
   e.preventDefault();
 };
 
+// Toggle class active untuk shopping cart
+const shoppingCart = document.querySelector('.shopping-cart');
+document.querySelector('#shop-button').onclick = () => {
+  shoppingCart.classList.toggle('active');
+  e.preventDefault;
+}
+
 // Klik di luar sidebar untuk menghilangkan nav
 
 const hm = document.querySelector("#hamburger-menu");
 const sb = document.querySelector("#search-button");
+const sc = document.querySelector("#shop-button");
 
 document.addEventListener("click", function (e) {
   if (!hm.contains(e.target) && !navbarNav.contains(e.target)) {
@@ -27,6 +35,9 @@ document.addEventListener("click", function (e) {
   }
   if (!sb.contains(e.target) && !searchForm.contains(e.target)) {
     searchForm.classList.remove("active");
+  }
+  if (!sc.contains(e.target) && !searchForm.contains(e.target)) {
+    shoppingCart.classList.remove("active");
   }
 });
 
@@ -41,5 +52,31 @@ function searchItems() {
     } else {
       cards[i].style.display = "none"; // Sembunyikan card
     }
+  }
+}
+
+// Modal Box
+const itemDetailModal = document.querySelector('#item-detail-modal');
+const itemDetailButtons = document.querySelectorAll('.item-detail-button');
+
+itemDetailButtons.forEach((btn) => {
+  btn.onclick = (e) => {
+    itemDetailModal.style.display = 'flex';
+    e.preventDefault(); 
+  }
+
+})
+
+
+// Klik tombol close modal
+document.querySelector('.modal .close-icon').onclick = (e) => {
+  itemDetailModal.style.display = 'none';
+  e.preventDefault();
+}
+
+// Klik tombol close modal dimana saja
+window.onclick = (e) => {
+  if (e.target === itemDetailModal) {
+    itemDetailModal.style.display = 'none';
   }
 }
