@@ -20,8 +20,8 @@ document.querySelector("#search-button").onclick = (e) => {
 const shoppingCart = document.querySelector('.shopping-cart');
 document.querySelector('#shop-button').onclick = () => {
   shoppingCart.classList.toggle('active');
-  e.preventDefault;
-}
+  e.preventDefault();
+};
 
 // Klik di luar sidebar untuk menghilangkan nav
 
@@ -36,10 +36,13 @@ document.addEventListener("click", function (e) {
   if (!sb.contains(e.target) && !searchForm.contains(e.target)) {
     searchForm.classList.remove("active");
   }
-  if (!sc.contains(e.target) && !searchForm.contains(e.target)) {
+  // Corrected condition: check against shoppingCart instead of searchForm
+  if (!sc.contains(e.target) && !shoppingCart.contains(e.target)) {
     shoppingCart.classList.remove("active");
   }
+  e.preventDefault();
 });
+
 
 function searchItems() {
   const input = document.getElementById("search-box").value.toLowerCase();
@@ -62,16 +65,15 @@ const itemDetailButtons = document.querySelectorAll('.item-detail-button');
 itemDetailButtons.forEach((btn) => {
   btn.onclick = (e) => {
     itemDetailModal.style.display = 'flex';
-    e.preventDefault(); 
   }
-
+  e.preventDefault()
 })
 
 
 // Klik tombol close modal
 document.querySelector('.modal .close-icon').onclick = (e) => {
   itemDetailModal.style.display = 'none';
-  e.preventDefault();
+  e.preventDefault()
 }
 
 // Klik tombol close modal dimana saja
