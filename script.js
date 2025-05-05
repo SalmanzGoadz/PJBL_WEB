@@ -18,7 +18,7 @@ document.querySelector("#search-button").onclick = (e) => {
 
 // Toggle class active untuk shopping cart
 const shoppingCart = document.querySelector('.shopping-cart');
-document.querySelector('#shop-button').onclick = () => {
+document.querySelector('#shop-button').onclick = (e) => {
   shoppingCart.classList.toggle('active');
   e.preventDefault();
 };
@@ -40,7 +40,6 @@ document.addEventListener("click", function (e) {
   if (!sc.contains(e.target) && !shoppingCart.contains(e.target)) {
     shoppingCart.classList.remove("active");
   }
-  e.preventDefault();
 });
 
 
@@ -60,14 +59,22 @@ function searchItems() {
 
 // Modal Box
 const itemDetailModal = document.querySelector('#item-detail-modal');
-const itemDetailButtons = document.querySelectorAll('.item-detail-button');
+const productsRow = document.querySelector('#products .row');
 
-itemDetailButtons.forEach((btn) => {
-  btn.onclick = (e) => {
-    itemDetailModal.style.display = 'flex';
-  }
-  e.preventDefault()
-})
+if (productsRow) {
+  productsRow.addEventListener('click', (e) => {
+    // Check if the clicked element or its parent has the class 'item-detail-button'
+    let target = e.target;
+    while (target && target !== productsRow) {
+      if (target.classList && target.classList.contains('item-detail-button')) {
+        itemDetailModal.style.display = 'flex';
+        e.preventDefault();
+        break;
+      }
+      target = target.parentNode;
+    }
+  });
+}
 
 
 // Klik tombol close modal
