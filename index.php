@@ -1,3 +1,9 @@
+<?php
+   session_start();
+   include("koneksi.php");
+
+?>
+
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -313,21 +319,21 @@
           class="map"
         ></iframe>
 
-        <form action="">
+        <form action="proses_kontak.php" method="POST">
           <div class="input-group">
             <i data-feather="user"></i>
-            <input type="text" placeholder="nama" />
+            <input type="text" name="nama" placeholder="nama" />
           </div>
           <div class="input-group">
             <i data-feather="mail"></i>
-            <input type="email" placeholder="email" />
+            <input type="email"name="email" placeholder="email" />
           </div>
           <div class="input-group">
-            <i data-feather="phone"></i>
-            <input type="number" placeholder="no" />
+            <i data-feather="message-square"></i>
+            <input type="text" name="pesan" placeholder="isi pesan" />
           </div>
-          <!-- <button type="submit" class="btn">Kirim pesan</button> -->
-          <a class="btn" href="mail.html">Kirim Pesan</a>
+          <button type="submit" class="btn">Kirim pesan</button>
+          
         </form>
       </div>
     </section>
@@ -355,15 +361,15 @@
         <p>
           Created by
           <a
-            href="https://www.instagram.com/bluetedz?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
-            >Rakha & </a
-          ><a href="https://www.instagram.com/salmandwiki_s/">Salman</a>. &copy;
+            href=""
+            >X PPLG 1 TEAM  & </a
+          ><a href="">KoRa</a>. &copy;
           2024.
         </p>
       </div>
     </footer>
 
-    <!-- Modal Box Item Detail Start -->
+    <!-- Modal Box Item Detail Start/Pop Up -->
     <div class="modal" id="item-detail-modal">
       <div class="modal-container">
         <a href="#" class="close-icon"><i data-feather="x"></i></a>
