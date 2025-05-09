@@ -21,7 +21,7 @@ if(isset($_POST['signUp'])){
 
 
             if($conn->query($insertQuery)==TRUE){
-                header("location: login.php");
+                header("location: login_register.php");
             }
             else{
                 echo "Error:".$conn->error;
@@ -38,13 +38,14 @@ if(isset($_POST['signIn'])){
    
    $sql="SELECT * FROM user WHERE email='$email' and password='$password'";
    $result=$conn->query($sql);
-   if($result->num_rows>0){
+   if ($result->num_rows > 0) {
     session_start();
-    $row=$result->fetch_assoc();
-    $_SESSION['email']=$row['email'];
+    $row = $result->fetch_assoc();
+    $_SESSION['user'] = $row; // atau $_SESSION['user'] = $row['email'];
     header("Location: index.php");
     exit();
-   }
+}
+
    else{
     echo "Not Found, Incorrect Email or Password";
    }

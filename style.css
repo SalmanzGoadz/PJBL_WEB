@@ -246,7 +246,7 @@ body {
   min-height: 100vh;
   display: flex;
   align-items: center;
-  background-image: url("/img/bg/kopihome.jpg");
+  background-image: url("img/bg/coffeee.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -399,6 +399,7 @@ body {
   gap: 1.5rem;
   margin-top: 4rem;
 }
+
 
 .products .product-card {
   text-align: center;

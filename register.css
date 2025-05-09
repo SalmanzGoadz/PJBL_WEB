@@ -5,8 +5,8 @@
     font-family: "poppins", sans-serif;
 }
 body{
-    background-color: #c9d6ff;
-    background:linear-gradient(to right, #e2e2e2, #c9d6ff)
+    background-image: url('https://wallpapers.com/images/hd/cup-of-coffee-red-beans-o660twikiagixxke.jpg');
+    background-size:cover ;
 
 }
 .container{
@@ -16,6 +16,7 @@ body{
     margin: 50px auto;
     border-radius: 10px;
     box-shadow: 0 20px 35px rgba(0,0, 1, 0, 9);
+    height: 100%;
 }
 form{
     margin: 0 2rem

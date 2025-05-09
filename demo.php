@@ -1,9 +1,3 @@
-<?php
-   session_start();
-   include("koneksi.php");
-
-?>
-
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -52,18 +46,17 @@
           <span class="quantity-badge" x-show="$store.cart.quantity" x-text="$store.cart.quantity"></span>
         </a>
         <a href="#" id="hamburger-menu"><i data-feather="menu"></i></a>
-        <a href="profile.php" id="profile"><i data-feather="user"></i></a>
       </div>
 
       <!-- Search Form start -->
       <div class="search-form">
         <input
           type="search"
-          id="product-search"
+          id="search-box"
           placeholder="cari menu..."
           oninput="searchItems()"
         />
-        <label for="product-search"><i data-feather="search"></i></label>
+        <label for="search-box"><i data-feather="search"></i></label>
       </div>
       <!-- Search Form end -->
 
@@ -199,112 +192,101 @@
     </section>
     <!-- Menu Section end-->
 
+    
     <!-- Products Section Start-->
-    <section class="products" id="products" x-data="products">
-      <h2><span>Produk</span></h2>
-      <p>Masukkan sesuatu yang penting disini</p>
+<section class="products" id="products" x-data="products">
+  <h2><span>Produk</span></h2>
+  <p>Masukkan sesuatu yang penting disini</p>
 
-      <div class="row">
-        <template x-for="(item, index) in items" x-key="index">
-          <div class="product-card">
-            <div class="product-icons">
-              <a href="#" @click.prevent="$store.cart.add(item)">
-                <svg
-                  width="24"
-                  height="24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <use href="img/feather-sprite.svg#shopping-cart" />
-                </svg>
-              </a>
-              <a href="#" class="item-detail-button">
-                <svg
-                  width="24"
-                  height="24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <use href="img/feather-sprite.svg#eye" />
-                </svg>
-              </a>
-            </div>
-            <div class="product-image">
-              <img :src="`img/menu/${item.img}`" :alt="item.name" />
-            </div>
-            <div class="product-content">
-              <h3 x-text="item.name"></h3>
-              <div class="product-stars">
-                <svg
-                  width="24"
-                  height="24"
-                  fill="currentColor"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <use href="img/feather-sprite.svg#star" />
-                </svg>
-                <svg
-                  width="24"
-                  height="24"
-                  fill="currentColor"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <use href="img/feather-sprite.svg#star" />
-                </svg>
-                <svg
-                  width="24"
-                  height="24"
-                  fill="currentColor"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <use href="img/feather-sprite.svg#star" />
-                </svg>
-                <svg
-                  width="24"
-                  height="24"
-                  fill="currentColor"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <use href="img/feather-sprite.svg#star" />
-                </svg>
-                <svg
-                  width="24"
-                  height="24"
-                  fill="currentColor"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <use href="img/feather-sprite.svg#star" />
-                </svg>
-              </div>
-              <div class="product-price"><span x-text="rupiah(item.price)"></span></div>
-              <p class="product-stock" x-text="`Stok: ${item.stok}`"></p>
+  <!-- Tombol Tambah Produk -->
+  <div style="margin-bottom: 2rem;">
+    <a href="admin_produk.php" class="btn-add-product">
+      + Tambah Produk
+    </a>
+  </div>
 
-            </div>
+  <div class="row">
+    <template x-for="(item, index) in items" x-key="index">
+      <div class="product-card">
+        <div class="product-icons">
+          <a href="#" @click.prevent="$store.cart.add(item)">
+            <svg
+              width="24"
+              height="24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <use href="img/feather-sprite.svg#shopping-cart" />
+            </svg>
+          </a>
+          <a href="#" class="item-detail-button">
+            <svg
+              width="24"
+              height="24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <use href="img/feather-sprite.svg#eye" />
+            </svg>
+          </a>
+        </div>
+        <div class="product-image">
+          <img :src="`img/menu/${item.img}`" :alt="item.name" />
+        </div>
+        <div class="product-content">
+          <h3 x-text="item.name"></h3>
+          <div class="product-stars">
+            <template x-for="i in 5">
+              <svg
+                width="24"
+                height="24"
+                fill="currentColor"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <use href="img/feather-sprite.svg#star" />
+              </svg>
+            </template>
           </div>
-        </template>
+          <div class="product-price">
+            <span x-text="rupiah(item.price)"></span>
+          </div>
+          <div class="product-price">
+                 Stok: <span x-text="item.stok"></span>
+          </div>
+
+        </div>
       </div>
-    </section>
+    </template>
+  </div>
+</section>
+
+
+<style>
+  .btn-add-product {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: #16a34a;
+    color: white;
+    font-weight: bold;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+
+  .btn-add-product:hover {
+    background-color: #15803d;
+  }
+</style>
+
     <!-- Products Section End-->
 
     <!-- Contact Section start -->
@@ -322,21 +304,21 @@
           class="map"
         ></iframe>
 
-        <form action="proses_kontak.php" method="POST">
+        <form action="">
           <div class="input-group">
             <i data-feather="user"></i>
-            <input type="text" name="nama" placeholder="nama" />
+            <input type="text" placeholder="nama" />
           </div>
           <div class="input-group">
             <i data-feather="mail"></i>
-            <input type="email"name="email" placeholder="email" />
+            <input type="email" placeholder="email" />
           </div>
           <div class="input-group">
-            <i data-feather="message-square"></i>
-            <input type="text" name="pesan" placeholder="isi pesan" />
+            <i data-feather="phone"></i>
+            <input type="number" placeholder="no" />
           </div>
-          <button type="submit" class="btn">Kirim pesan</button>
-          
+          <!-- <button type="submit" class="btn">Kirim pesan</button> -->
+          <a class="btn" href="mail.html">Kirim Pesan</a>
         </form>
       </div>
     </section>
@@ -364,15 +346,15 @@
         <p>
           Created by
           <a
-            href=""
-            >X PPLG 1 TEAM  & </a
-          ><a href="">KoRa</a>. &copy;
+            href="https://www.instagram.com/bluetedz?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+            >Rakha & </a
+          ><a href="https://www.instagram.com/salmandwiki_s/">Salman</a>. &copy;
           2024.
         </p>
       </div>
     </footer>
 
-    <!-- Modal Box Item Detail Start/Pop Up -->
+    <!-- Modal Box Item Detail Start -->
     <div class="modal" id="item-detail-modal">
       <div class="modal-container">
         <a href="#" class="close-icon"><i data-feather="x"></i></a>
