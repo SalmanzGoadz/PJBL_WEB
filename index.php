@@ -2,7 +2,28 @@
    session_start();
    include("koneksi.php");
 
+  //  $profilePicture = isset($_SESSION['user']['profile_picture']) && !empty($_SESSION['user']['profile_picture'])
+  //   ? $_SESSION['user']['profile_picture']
+  //   : 'img/user.svg';
+
+
+
+if (isset($_SESSION['user'])) {
+    $userId = $_SESSION['user']['id'];
+    $user_query = mysqli_query($conn, "SELECT * FROM user WHERE id = $userId");
+    $current_user = mysqli_fetch_assoc($user_query);
+
+    // Update session biar sync sama database
+    $_SESSION['user'] = $current_user;
+} else {
+    $current_user = null;
+}
+
+
+
 ?>
+
+
 
 <html lang="en">
   <head>
@@ -52,7 +73,17 @@
           <span class="quantity-badge" x-show="$store.cart.quantity" x-text="$store.cart.quantity"></span>
         </a>
         <a href="#" id="hamburger-menu"><i data-feather="menu"></i></a>
-        <a href="profile.php" id="profile"><i data-feather="user"></i></a>
+       <?php if (!empty($current_user['profile_picture'])): ?>
+          <a href="profile.php">
+             <img src="<?php echo $current_user['profile_picture']; ?>" alt="Profile Picture" class="profile-picture">
+          </a>
+        <?php else: ?>
+             <a href="profile.php">
+                <i data-feather="user"></i>
+             </a>
+        <?php endif; ?>
+
+      
       </div>
 
       <!-- Search Form start -->
@@ -84,7 +115,7 @@
           </div>
         </div>
         </template>
-        <h4 x-show="!$store.cart.items.length">Cart is Empty</h4>
+        <h4 x-show="!$store.cart.items.length">Keranjang Kosong</h4>
         <h4 x-show="$store.cart.items.length">Total : <span x-text="rupiah($store.cart.total)"></span></h4>
 
         <div class="form-container" x-show="$store.cart.items.length">
@@ -200,109 +231,70 @@
     <!-- Menu Section end-->
 
     <!-- Products Section Start-->
-    <section class="products" id="products" x-data="products">
+    <section class="products" id="products" x-data="products" x-init="init()">
       <h2><span>Produk</span></h2>
       <p>Masukkan sesuatu yang penting disini</p>
 
       <div class="row">
-        <template x-for="(item, index) in items" x-key="index">
-          <div class="product-card">
-            <div class="product-icons">
-              <a href="#" @click.prevent="$store.cart.add(item)">
-                <svg
-                  width="24"
-                  height="24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <use href="img/feather-sprite.svg#shopping-cart" />
-                </svg>
-              </a>
-              <a href="#" class="item-detail-button">
-                <svg
-                  width="24"
-                  height="24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <use href="img/feather-sprite.svg#eye" />
-                </svg>
-              </a>
-            </div>
-            <div class="product-image">
-              <img :src="`img/menu/${item.img}`" :alt="item.name" />
-            </div>
-            <div class="product-content">
-              <h3 x-text="item.name"></h3>
-              <div class="product-stars">
-                <svg
-                  width="24"
-                  height="24"
-                  fill="currentColor"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <use href="img/feather-sprite.svg#star" />
-                </svg>
-                <svg
-                  width="24"
-                  height="24"
-                  fill="currentColor"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <use href="img/feather-sprite.svg#star" />
-                </svg>
-                <svg
-                  width="24"
-                  height="24"
-                  fill="currentColor"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <use href="img/feather-sprite.svg#star" />
-                </svg>
-                <svg
-                  width="24"
-                  height="24"
-                  fill="currentColor"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <use href="img/feather-sprite.svg#star" />
-                </svg>
-                <svg
-                  width="24"
-                  height="24"
-                  fill="currentColor"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <use href="img/feather-sprite.svg#star" />
-                </svg>
-              </div>
-              <div class="product-price"><span x-text="rupiah(item.price)"></span></div>
-              <p class="product-stock" x-text="`Stok: ${item.stok}`"></p>
+       <template x-for="(item, index) in items" :key="item.id">
 
-            </div>
-          </div>
+  <div class="product-card">
+    <div class="product-icons">
+      <a href="#" @click.prevent="$store.cart.add(item)">
+        <svg
+          width="24"
+          height="24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <use href="img/feather-sprite.svg#shopping-cart" />
+        </svg>
+      </a>
+      <a href="#" class="item-detail-button">
+        <svg
+          width="24"
+          height="24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <use href="img/feather-sprite.svg#eye" />
+        </svg>
+      </a>
+    </div>
+    <div class="product-image">
+      <img :src="`img/menu/${item.img}`" :alt="item.name" />
+    </div>
+    <div class="product-content">
+      <h3 x-text="item.name"></h3>
+      <div class="product-stars">
+        <template x-for="i in 5">
+          <svg
+            width="24"
+            height="24"
+            fill="currentColor"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <use href="img/feather-sprite.svg#star" />
+          </svg>
         </template>
+      </div>
+      <div class="product-price">
+        <span x-text="rupiah(item.price)"></span>
+      </div>
+      <p class="product-stock" x-text="`Stok: ${item.stok}`"></p>
+    </div>
+  </div>
+</template>
+
       </div>
     </section>
     <!-- Products Section End-->

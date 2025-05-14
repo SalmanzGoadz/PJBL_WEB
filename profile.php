@@ -107,6 +107,9 @@ $_SESSION['user'] = $current_user;
         <div class="info-box">
             <p>Last Name : <?php echo $current_user ['lastName'] ; ?></p>
         </div>
+        <div class="info-box">
+            <p>No Telpon : <?php echo $current_user ['no_telpon'] ; ?></p>
+        </div>
         
         <div class="info-box">
             <p>Email : <?php echo $current_user['email']; ?></p>

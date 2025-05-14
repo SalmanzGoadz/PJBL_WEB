@@ -268,7 +268,7 @@
     </template>
   </div>
 </section>
-
+  
 
 <style>
   .btn-add-product {

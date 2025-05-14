@@ -25,7 +25,7 @@ if (move_uploaded_file($tmp, $pathGambar)) {
   $stmt->bind_param("sissi", $nama, $harga, $gambar, $desc, $stok);
 
   if ($stmt->execute()) {
-    echo "<script>alert('Produk berhasil ditambahkan!'); window.location.href='demo.php';</script>";
+    echo "<script>alert('Produk berhasil ditambahkan!'); window.location.href='index.php';</script>";
   } else {
     echo "Gagal menyimpan ke database: " . $conn->error;
   }

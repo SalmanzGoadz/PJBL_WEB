@@ -20,8 +20,13 @@
         </div>
     </div>
 
-    <div class="halman">
+    <div class="halaman">
         <h1>halo admin</h1>
+        <p>Web ini di buat dari team yang terdiri dari 6 orang </p>
+    </div>
+
+    <div class="halaman-img">
+        <img src="" alt="">
     </div>
 
 </body>
