@@ -234,6 +234,12 @@ if (isset($_SESSION['user'])) {
     <section class="products" id="products" x-data="products" x-init="init()">
       <h2><span>Produk</span></h2>
       <p>Masukkan sesuatu yang penting disini</p>
+      <select x-model="filterJenis">
+       <option value="">Semua</option>
+       <option value="Minuman">Minuman</option>
+       <option value="Makanan">Makanan</option>
+      </select>
+
 
       <div class="row">
        <template x-for="(item, index) in items" :key="item.id">
@@ -303,7 +309,7 @@ if (isset($_SESSION['user'])) {
 
     <section id="contact" class="contact">
       <h2><span>Kontak </span>Kami</h2>
-      <p>Berikut adalah lokasi kedai kami dan info kontak kedai kami</p>
+      <p>Berikut adalah lokasi kedai kami dan form pesan jika anda ingin pesan langsung</p>
 
       <div class="row">
         <iframe
@@ -387,7 +393,7 @@ if (isset($_SESSION['user'])) {
             </div>
             <div class="product-price">IDR 30K <span>IDR 55K</span></div>
             <a href="#"
-              ><i data-feather="shopping-cart"></i><span>add to cart</span></a
+              ><i data-feather="shopping-cart"></i><span>Masukan Keranjang</span></a
             >
           </div>
         </div>

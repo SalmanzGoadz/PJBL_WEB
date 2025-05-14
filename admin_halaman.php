@@ -15,7 +15,8 @@
 
         <div class="navbar-nav">
             <a href="admin_kontak.php">Kontak</a>
-            <a href="admin_produk.php">Produk</a>
+            <a href="admin_produk.php">tambahProduk</a>
+            <a href="kelola_produk.php">kelola_produk</a>
 
         </div>
     </div>

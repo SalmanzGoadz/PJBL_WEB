@@ -1,7 +1,7 @@
 <?php
 include 'koneksi.php';
 
-$query = "SELECT id, nama AS name, harga AS price, gambar AS img,deskripsi, stok FROM produk";
+$query = "SELECT id, nama AS name, harga AS price, gambar AS img,deskripsi, stok,jenis FROM produk";
 $result = $conn->query($query);
 
 $produk = [];
