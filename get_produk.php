@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 include 'koneksi.php';
 
@@ -22,3 +23,20 @@ while ($row = $result->fetch_assoc()) {
 header('Content-Type: application/json');
 echo json_encode($produk);
 ?>
+=======
+<?php
+include 'koneksi.php';
+
+$query = "SELECT id, nama AS name, harga AS price, gambar AS img,deskripsi, stok,jenis FROM produk";
+$result = $conn->query($query);
+
+$produk = [];
+
+while ($row = $result->fetch_assoc()) {
+    $produk[] = $row;
+}
+
+header('Content-Type: application/json');
+echo json_encode($produk);
+?>
+>>>>>>> cd0a9dd9413469b337ef770834175199865ee366
