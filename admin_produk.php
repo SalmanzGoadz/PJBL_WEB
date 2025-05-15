@@ -35,6 +35,11 @@
       border-radius: 5px;
       border: 1px solid #ccc;
     }
+
+    .form-radio{
+      padding: 2px;;
+      margin: 2px;;
+    }
     .btn-submit {
       background-color: #16a34a;
       color: white;
@@ -72,6 +77,14 @@
       <div class="form-group">
         <label for="stok">Stok:</label>
         <input type="number" name="stok" id="stok" required>
+      </div>
+      <div class="form-radio">
+        <label>Jenis Produk:</label><br>
+         <input type="radio" name="jenis" id="makanan" value="Makanan" required>
+         <label for="makanan">Makanan</label><br>
+
+        <input type="radio" name="jenis" id="minuman" value="Minuman" required>
+        <label for="minuman">Minuman</label>
       </div>
 
       <button type="submit" class="btn-submit">Simpan Produk</button>

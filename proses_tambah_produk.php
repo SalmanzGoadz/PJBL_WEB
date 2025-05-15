@@ -8,6 +8,7 @@ $gambar = $_FILES['img']['name'];
 $tmp    = $_FILES['img']['tmp_name'];
 $desc   = $_POST['desc'] ?? "";
 $stok   = $_POST['stok'];
+$jenis  = $_POST['jenis'];
 
 // Tentukan folder tujuan dan pastikan folder tersebut ada
 $folderTujuan = "./img/menu/"; // Menggunakan path relatif
@@ -20,9 +21,9 @@ $pathGambar = $folderTujuan . basename($gambar);
 // Pindahkan file
 if (move_uploaded_file($tmp, $pathGambar)) {
   // Simpan ke database
-  $query = "INSERT INTO produk (nama, harga, gambar, deskripsi, stok) VALUES (?, ?, ?, ?, ?)";
+  $query = "INSERT INTO produk (nama, harga, gambar, deskripsi, stok, jenis) VALUES (?, ?, ?, ?, ?, ?)";
   $stmt  = $conn->prepare($query);
-  $stmt->bind_param("sissi", $nama, $harga, $gambar, $desc, $stok);
+  $stmt->bind_param("sissis", $nama, $harga, $gambar, $desc, $stok, $jenis);
 
   if ($stmt->execute()) {
     echo "<script>alert('Produk berhasil ditambahkan!'); window.location.href='index.php';</script>";

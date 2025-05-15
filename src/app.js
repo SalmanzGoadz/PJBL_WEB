@@ -1,3 +1,4 @@
+// ambil produk dari db
 document.addEventListener('alpine:init', () => {
   Alpine.store('products', {
     items: [],
@@ -16,29 +17,36 @@ document.addEventListener('alpine:init', () => {
     }
   });
 
-  Alpine.data('products', () => ({
-    search: '',
-    init() {
-      Alpine.store('products').fetchProducts();
+  // search produk and sortir/filter
+ Alpine.data('products', () => ({
+  search: '',
+  filterJenis: '',
+  init() {
+    Alpine.store('products').fetchProducts();
 
-      const input = document.querySelector('#product-search');
-      if (input) {
-        input.addEventListener('input', (e) => {
-          this.search = e.target.value;
-          const section = document.querySelector('#products');
-          if (section) {
-            section.scrollIntoView({ behavior: 'smooth' });
-          }
-        });
-      }
-    },
-    get items() {
-      return Alpine.store('products').items.filter(item =>
-        item.name.toLowerCase().includes(this.search.toLowerCase())
-      );
+    const input = document.querySelector('#product-search');
+    if (input) {
+      input.addEventListener('input', (e) => {
+        this.search = e.target.value;
+        const section = document.querySelector('#products');
+        if (section) {
+          section.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
     }
-  }));
+  },
+  get items() {
+    return Alpine.store('products').items
+      .filter(item =>
+        item.name.toLowerCase().includes(this.search.toLowerCase())
+      )
+      .filter(item =>
+        this.filterJenis ? item.jenis === this.filterJenis : true
+      );
+  }
+}));
 
+  // cart/keranjang
   Alpine.store('cart', {
     items: [],
     total: 0,
@@ -81,6 +89,46 @@ document.addEventListener('alpine:init', () => {
   });
 });
 
+
+// untuk data user di payment gateway
+document.addEventListener('alpine:init', () => {
+  Alpine.data('checkoutForm', () => ({
+    init() {
+      if (window.loggedInUser) {
+        const user = window.loggedInUser;
+        this.$nextTick(() => {
+          document.querySelector('#name').value = user.frisName + ' ' + user.lastName;
+          document.querySelector('#email').value = user.email;
+          document.querySelector('#phone').value = user.no_telpon;
+        });
+      }
+    }
+  }));
+});
+
+// validasi tombol checkout
+const checkoutButton=document.querySelector('.checkout-button');
+checkoutButton.disabled=true;
+
+const form=document.querySelector('#checkoutForm');
+
+form.addEventListener('keyup',function(){
+
+  for (let i=0; i< form.elements.length;i++){
+    if(form.elements[i].value.length !==0){
+      checkoutButton.classList.remove('disabled')
+      checkoutButton.classList.add('disabled')
+    }
+    else{
+      return false;
+    }
+  }
+  checkoutButton.disabled=false;
+  checkoutButton.classList.remove('disabled');
+});
+
+
+// jadiin rupiah
 const rupiah = (number) => {
   return new Intl.NumberFormat('id-ID', {
     style: 'currency',

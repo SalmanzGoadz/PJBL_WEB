@@ -44,12 +44,24 @@ if (isset($_SESSION['user'])) {
     <script src="https://unpkg.com/feather-icons"></script>
     <!-- My Style -->
     <link rel="stylesheet" href="style.css" />
-    <!-- AlpineJS -->
+    <!-- user data untuk json -->
+     <!-- lempar ke JS -->
+    <?php
+    if (session_status() === PHP_SESSION_NONE) {
+         session_start();
+    }
+     $user = $_SESSION['user'] ?? null;
+    ?>
+    <script>
+      window.loggedInUser = <?= json_encode($user); ?>;
+    </script>
+
+    <!-- AlpineJS --> 
     <script
       defer
       src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
     ></script>
-    <script src="src/app.js"></script>
+    <script src="src/app.js" async></script>
   </head>
 
   <body>
@@ -119,26 +131,32 @@ if (isset($_SESSION['user'])) {
         <h4 x-show="$store.cart.items.length">Total : <span x-text="rupiah($store.cart.total)"></span></h4>
 
         <div class="form-container" x-show="$store.cart.items.length">
-          <form action="" id="checkoutForm">
+          <form x-data="checkoutForm" x-init="init()" id="checkoutForm">
+
             <h5>Customer Detail</h5>
 
-            <label for="name">
-              <span>Name</span>
-              <input type="text" id="name" name="name"/>
-            </label>
+        <label for="name">
+            <span>Name</span>
+             <input type="text" id="name" name="name" />
+        </label>
 
-            <label for="email">
-              <span>Email</span>
-              <input type="email" id="email" email="email"/>
-            </label>
+         <label for="email">
+            <span>Email</span>
+            <input type="email" id="email" name="email" />
+          </label>
 
-            <label for="phone">
+          <label for="phone">
               <span>Phone</span>
-              <input type="number" id="phone" phone="phone" autocomplete="off"/>
-            </label>
+              <input type="number" id="phone" name="phone" autocomplete="off" />
+          </label>
 
-            <button class="checkout-button" type="submit" id="checkout-button">Checkout</button>
-          </form>
+          <label for="addres">
+            <span>No Meja</span>
+            <input type="number" id="meja" name="meja">
+          </label>
+
+            <button class="checkout-button disabled" type="submit" id="checkout-button" value="checkout">Checkout</button>
+        </form>
         </div>
       </div>
       <!-- Sopping Cart End-->
@@ -233,7 +251,7 @@ if (isset($_SESSION['user'])) {
     <!-- Products Section Start-->
     <section class="products" id="products" x-data="products" x-init="init()">
       <h2><span>Produk</span></h2>
-      <p>Masukkan sesuatu yang penting disini</p>
+      <p>Masukkan sesuatu yang penting di Keranjang.Anda chekout kami antar ke meja anda,Pastikan Saldo cukup.</p>
       <select x-model="filterJenis">
        <option value="">Semua</option>
        <option value="Minuman">Minuman</option>
@@ -309,7 +327,7 @@ if (isset($_SESSION['user'])) {
 
     <section id="contact" class="contact">
       <h2><span>Kontak </span>Kami</h2>
-      <p>Berikut adalah lokasi kedai kami dan form pesan jika anda ingin pesan langsung</p>
+      <p>Berikut adalah lokasi kedai kami dan Kami menyediakan form pesan jika anda ingin memesan cash atau ingin bertanya.</p>
 
       <div class="row">
         <iframe
