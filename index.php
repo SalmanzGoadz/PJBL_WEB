@@ -1,3 +1,4 @@
+
 <?php
    session_start();
    include("koneksi.php");
@@ -62,6 +63,12 @@ if (isset($_SESSION['user'])) {
       src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
     ></script>
     <script src="src/app.js" async></script>
+    
+   <script type="text/javascript"
+      src="https://app.sandbox.midtrans.com/snap/snap.js"
+      data-client-key="SB-Mid-client-ektpxUedVjPSnm4G">
+    </script>
+    
   </head>
 
   <body>
@@ -150,7 +157,7 @@ if (isset($_SESSION['user'])) {
               <input type="number" id="phone" name="phone" autocomplete="off" />
           </label>
 
-          <label for="addres">
+          <label for="meja">
             <span>No Meja</span>
             <input type="number" id="meja" name="meja">
           </label>

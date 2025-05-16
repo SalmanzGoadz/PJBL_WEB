@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -28,43 +27,36 @@
   color: white;
  }
 
-.halaman{
+*{
+  margin: 0;
+  padding: 0;
+}
+body {
+  background: #b6895b;
+  font-family: sans-serif;
+}
+.title-box{
+  text-align: center;
+  margin: 100px auto 50px;
+}
+.title-box p{
+  margin-top: 10px;
+  line-height: 24px;
+}
+.profile-box {
+  width: 240px;
+  height: 240px;
+  background: #fff;
+  border-radius: 4px;
+  margin-bottom: 30px;
+  box-shadow: 0 10px 10px 10px rgba(115,193,255 0.1);
+  padding: 20px;
+  position: relative;
+}
+.profile-box img{
+  width: 100px;
   position: absolute;
-  bottom:50%;
-  
-=======
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.4rem 7%;
-    background-color: rgba(1, 1, 1, 0.8);
-    border-bottom: 1px solid #513c28;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 9999;
-    
-  }
-.navbar .logo {
-    font-size: 2rem;
-    font-weight: 700;
-    color: #fff;
-    font-style: italic;
-  }
-  
-  .navbar .logo span {
-    color:#b6895b;
-  }
-
- .navbar-nav a{
-  color: white;
- }
-
-.halaman{
-  position: absolute;
-  bottom:50%;
-  
->>>>>>> cd0a9dd9413469b337ef770834175199865ee366
+  top: 20px;
+  right: 20px;
+  border-radius: 4px;
 }
