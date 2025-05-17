@@ -29,64 +29,64 @@ const hm = document.querySelector("#hamburger-menu");
 const sb = document.querySelector("#search-button");
 const sc = document.querySelector("#shop-button");
 
-document.addEventListener("click", function (e) {
+document.addEventListener("click", function (e) { // jika klik di luar sidebar
   if (!hm.contains(e.target) && !navbarNav.contains(e.target)) {
-    navbarNav.classList.remove("active");
+    navbarNav.classList.remove("active");// menghilangkan class active
   }
-  if (!sb.contains(e.target) && !searchForm.contains(e.target)) {
+  if (!sb.contains(e.target) && !searchForm.contains(e.target)) { // jika klik di luar search form
     searchForm.classList.remove("active");
   }
-  // Corrected condition: check against shoppingCart instead of searchForm
-  if (!sc.contains(e.target) && !shoppingCart.contains(e.target)) {
-    shoppingCart.classList.remove("active");
+  
+  if (!sc.contains(e.target) && !shoppingCart.contains(e.target)) {// jika klik di luar shopping cart
+    shoppingCart.classList.remove("active");// menghilangkan class active
   }
 });
 
 
-function searchItems() {
-  const input = document.getElementById("search-box").value.toLowerCase();
-  const cards = document.getElementsByClassName("menu-card");
+function searchItems() {// Fungsi untuk mencari item
+  const input = document.getElementById("search-box").value.toLowerCase(); // Ambil nilai input
+  const cards = document.getElementsByClassName("menu-card");// Ambil semua elemen dengan class menu-card
 
-  for (let i = 0; i < cards.length; i++) {
-    const cardText = cards[i].textContent.toLowerCase();
-    if (cardText.indexOf(input) > -1) {
+  for (let i = 0; i < cards.length; i++) {// Looping semua card
+    const cardText = cards[i].textContent.toLowerCase();// Ambil text content dari card
+    if (cardText.indexOf(input) > -1) {// Jika input ada di dalam text content card
       cards[i].style.display = ""; // Tampilkan card
-    } else {
+    } else {// Jika input tidak ada di dalam text content card
       cards[i].style.display = "none"; // Sembunyikan card
     }
   }
 }
 
 // Modal Box
-const itemDetailModal = document.querySelector('#item-detail-modal');
-const productsRow = document.querySelector('#products .row');
+const itemDetailModal = document.querySelector('#item-detail-modal');// Ambil elemen modal
+const productsRow = document.querySelector('#products .row');// Ambil elemen row di dalam produk
 
-if (productsRow) {
-  productsRow.addEventListener('click', (e) => {
-    // Check if the clicked element or its parent has the class 'item-detail-button'
-    let target = e.target;
-    while (target && target !== productsRow) {
-      if (target.classList && target.classList.contains('item-detail-button')) {
-        itemDetailModal.style.display = 'flex';
-        e.preventDefault();
-        break;
+if (productsRow) {// Jika elemen row ada
+  productsRow.addEventListener('click', (e) => {// Tambahkan event listener untuk klik
+    
+    let target = e.target;// Ambil elemen target dari event
+    while (target && target !== productsRow) {// Looping sampai target adalah row
+      if (target.classList && target.classList.contains('item-detail-button')) {// Jika target memiliki class item-detail
+        itemDetailModal.style.display = 'flex';// Tampilkan modal
+        e.preventDefault();// Mencegah default action
+        break;// Keluar dari loop
       }
-      target = target.parentNode;
+      target = target.parentNode;// Pindah ke parent node
     }
   });
 }
 
 
 // Klik tombol close modal
-document.querySelector('.modal .close-icon').onclick = (e) => {
-  itemDetailModal.style.display = 'none';
-  e.preventDefault()
+document.querySelector('.modal .close-icon').onclick = (e) => {// Ambil elemen close icon
+  itemDetailModal.style.display = 'none';// Sembunyikan modal
+  e.preventDefault()// Mencegah default action
 }
 
 // Klik tombol close modal dimana saja
-window.onclick = (e) => {
-  if (e.target === itemDetailModal) {
-    itemDetailModal.style.display = 'none';
+window.onclick = (e) => {// Ambil elemen window
+  if (e.target === itemDetailModal) {// Jika target adalah modal
+    itemDetailModal.style.display = 'none';// Sembunyikan modal
   }
 }
 

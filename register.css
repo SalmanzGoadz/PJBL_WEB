@@ -5,12 +5,13 @@
     font-family: "poppins", sans-serif;
 }
 body{
-    background-image: url('https://wallpapers.com/images/hd/cup-of-coffee-red-beans-o660twikiagixxke.jpg');
+    background-image: url('img/bg/login.jpg');
     background-size:cover ;
 
 }
 .container{
     background: #fff;
+    opacity: 0.9;
     width: 450px;
     padding: 1.5rem;
     margin: 50px auto;
@@ -33,7 +34,7 @@ input{
     width: 100%;
     background-color: transparent;
     border: none;
-    border-bottom:1px solid #757575;
+    border-bottom:1px solid #b6895b;
     padding-left: 1.5rem;
     font-size: 15px;
 }
@@ -49,7 +50,7 @@ input{
 input:focus{
     background-color: transparent;
     outline: transparent;
-    border-bottom:2px solid hsl(327, 90%, 28%);
+    border-bottom:2px solid hsl(36, 84%, 36%);
 }
 input::placeholder{
     color: transparent;
@@ -64,7 +65,7 @@ label{
 }
 input:focus~label,input:not(:placeholder-shown)~label{
     top:-3em;
-    color: hsl(327, 90%, 28%);
+    color: hsl(39, 74%, 47%);
     font: size 15px;
 }
 
@@ -76,11 +77,11 @@ input:focus~label,input:not(:placeholder-shown)~label{
 
 .recover a{
     text-decoration: none;
-    color: rgb(125, 125, 235);
+    color: #b6895b; 
 }
 
 .recover a:hover{
-    color: blue;
+    color: #855626;
     text-decoration: underline;
 }
 .btn{
@@ -90,13 +91,13 @@ input:focus~label,input:not(:placeholder-shown)~label{
     outline: none;
     border: none;
     width: 100%;
-    background: rgb(125, 125, 235);
+    background: #b6895b;
     color: white;
     cursor: pointer;
     transition: 0.9s;
 }
 .btn:hover{
-    background: #07001f;
+    background: #81572d;
 }
 .or {
     font-size: 1.1rem;
@@ -107,12 +108,12 @@ input:focus~label,input:not(:placeholder-shown)~label{
     text-align: center;
 }
 .icons i{
-    color: rgb(125, 125, 235);
+    color: #b6895b;
     padding: 0.8rem 1.5rem ;
     border-radius: 10px;
     font-size: 1.5rem;
     cursor: pointer;
-    border: 2px solid #dfe9f5;
+    border: 2px solid #000000;
     margin: 0 15px;
     transition: 1s;
 }
@@ -129,7 +130,7 @@ input:focus~label,input:not(:placeholder-shown)~label{
     font-weight: bold;
 }
 button{
-    color: rgb(125, 125, 235);
+    color: #b6895b;
     border: none;
     background-color: transparent;
     font-size: 1rem;
@@ -137,5 +138,5 @@ button{
 }
 button:hover{
     text-decoration: underline;
-    color: blue;
+    color: #6e4c2a;
 }

@@ -1,5 +1,14 @@
 <?php
 
+session_start();
+// Cek apakah pengguna sudah login dan memiliki peran admin
+
+if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
+    header("Location: index.php?msg=noaccess");
+    exit;
+}
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -100,7 +109,7 @@
                 <i class="fa fa-instagram"></i>
                 </a>
             </div>
-            <p> UI/UX leader dan Front End Dev(admin produk) </p>
+            <p> UI/UX dan Front End Dev(admin produk) </p>
         </div>
         <div class= "profile-box">
             <h4>Najwa</h4>

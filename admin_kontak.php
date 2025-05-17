@@ -1,8 +1,8 @@
 <?php
 include("koneksi.php"); // koneksi ke database
 
-$query = "SELECT * FROM pesan ORDER BY id DESC";
-$result = mysqli_query($conn, $query);
+$query = "SELECT * FROM pesan ORDER BY id DESC"; // Query untuk mengambil semua data pesan dari database
+$result = mysqli_query($conn, $query);// Eksekusi query
 ?>
 
 <!DOCTYPE html>
@@ -36,8 +36,8 @@ $result = mysqli_query($conn, $query);
   </tr>
 
   <?php
-  $no = 1;
-  while ($row = mysqli_fetch_assoc($result)) {
+  $no = 1;// Inisialisasi nomor urut
+  while ($row = mysqli_fetch_assoc($result)) {// Mengambil data dari hasil query
     echo "<tr>
             <td>".$no++."</td>
             <td>".$row['nama']."</td>

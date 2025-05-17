@@ -9,20 +9,28 @@
 
 
 
-if (isset($_SESSION['user'])) {
-    $userId = $_SESSION['user']['id'];
-    $user_query = mysqli_query($conn, "SELECT * FROM user WHERE id = $userId");
-    $current_user = mysqli_fetch_assoc($user_query);
+if (isset($_SESSION['user'])) { // jika ada session user
+    $userId = $_SESSION['user']['id']; // ambil id user dari session
+    $user_query = mysqli_query($conn, "SELECT * FROM user WHERE id = $userId"); // ambil data user dari database
+    $current_user = mysqli_fetch_assoc($user_query);// ambil data user dari query
 
-    // Update session biar sync sama database
-    $_SESSION['user'] = $current_user;
-} else {
-    $current_user = null;
+    // Update session biar sync sama database  update session dengan data terbaru
+    $_SESSION['user'] = $current_user; 
+} 
+
+else {// jika tidak ada session user
+    $current_user = null;// set current_user ke null
 }
 
+// notif
+ if (isset($_GET['msg']) && $_GET['msg'] === 'noaccess'): ?>// jika ada parameter msg dan isinya noaccess
+<script>alert('Anda tidak memiliki akses ke halaman ini.');</script> // tampilkan pesan error
+<?php endif; // tutup if
+
+?> 
 
 
-?>
+
 
 
 

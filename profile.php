@@ -2,71 +2,80 @@
 include 'koneksi.php';
 session_start();
 
-// Check if user is logged in
-if (!isset($_SESSION['user'])) {
-    header("Location:login_register.php");
-    exit();
+// cek apakah pengguna sudah login
+if (!isset($_SESSION['user'])) {// jika tidak ada session user
+    header("Location:login_register.php");// redirect ke halaman login
+    exit();// keluar dari script
 }
 
-$user = $_SESSION['user'];
+$user = $_SESSION['user'];// ambil data user dari session
 
-// Handle profile picture upload
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['profile_picture'])) {
-    $target_dir = "uploads/";
+// proses upload foto profil
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['profile_picture'])) {// jika ada file yang diupload
+    $target_dir = "uploads/";//  masukan ke folder uploads
     
-    // Create directory if it doesn't exist
+    // buat folder jika belum ada
     if (!file_exists($target_dir)) {
-        mkdir($target_dir, 0777, true);
+        mkdir($target_dir, 0777, true);// jika belum ada buat folder uploads
     }
     
-    $file_extension = pathinfo($_FILES["profile_picture"]["name"], PATHINFO_EXTENSION);
-    $new_filename = "profile_" . $user['id'] . "." . $file_extension;
-    $target_file = $target_dir . $new_filename;
+    $file_extension = pathinfo($_FILES["profile_picture"]["name"], PATHINFO_EXTENSION);// ambil ekstensi file
+    $new_filename = "profile_" . $user['id'] . "." . $file_extension;// buat nama file baru
+    $target_file = $target_dir . $new_filename;// buat path lengkap untuk file
     
-    // Check if image file is valid
+    // validasi file
     $valid_file = true;
     
-    // Check file size - limit to 5MB
-    if ($_FILES["profile_picture"]["size"] > 5000000) {
-        echo "<script>alert('File terlalu besar. Maksimal 5MB.');</script>";
-        $valid_file = false;
+    // Cek apakah file sudah ada
+    if ($_FILES["profile_picture"]["size"] > 5000000) {// jika ukuran file lebih dari 5MB
+        echo "<script>alert('File terlalu besar. Maksimal 5MB.');</script>";// tampilkan pesan error
+        $valid_file = false;// set valid_file ke false
     }
     
-    // Allow certain file formats
-    if ($file_extension != "jpg" && $file_extension != "png" && $file_extension != "jpeg" && $file_extension != "gif") {
-        echo "<script>alert('Hanya file JPG, JPEG, PNG & GIF yang diperbolehkan.');</script>";
-        $valid_file = false;
+    // Cek apakah file adalah gambar
+    if ($file_extension != "jpg" && $file_extension != "png" && $file_extension != "jpeg" && $file_extension != "gif") {// jika bukan jpg, png, jpeg, atau gif
+        
+        echo "<script>alert('Hanya file JPG, JPEG, PNG & GIF yang diperbolehkan.');</script>";// tampilkan pesan error
+        $valid_file = false;// set valid_file ke false
     }
     
-    if ($valid_file) {
-        if (move_uploaded_file($_FILES["profile_picture"]["tmp_name"], $target_file)) {
-            // Update database with new profile picture path
-            $update_query = mysqli_query($conn, "UPDATE user SET profile_picture='$target_file' WHERE id=".$user['id']);
+    if ($valid_file) { // jika file valid
+        if (move_uploaded_file($_FILES["profile_picture"]["tmp_name"], $target_file)) { // jika berhasil memindahkan file
             
-            if ($update_query) {
-                // Update session data
-                $_SESSION['user']['profile_picture'] = $target_file;
-                echo "<script>alert('Foto profil berhasil diperbarui!');window.location='profile.php';</script>";
-            } else {
-                echo "<script>alert('Terjadi kesalahan saat memperbarui database.');</script>";
+            // update database
+            $update_query = mysqli_query($conn, "UPDATE user SET profile_picture='$target_file' WHERE id=".$user['id']);// update database dengan path file
+            
+            if ($update_query) {// jika berhasil update database
+                // update session
+                
+                $_SESSION['user']['profile_picture'] = $target_file;// update session dengan path file
+                echo "<script>alert('Foto profil berhasil diperbarui!');window.location='profile.php';</script>";// tampilkan pesan sukses dan redirect ke halaman profil
+            } 
+            
+            else {// jika gagal update database
+                echo "<script>alert('Terjadi kesalahan saat memperbarui database.');</script>"; // tampilkan pesan error
             }
-        } else {
-            echo "<script>alert('Terjadi kesalahan saat mengunggah file.');</script>";
+
+        }
+        
+        else {// jika gagal memindahkan file 
+            echo "<script>alert('Terjadi kesalahan saat mengunggah file.');</script>";// tampilkan pesan error
         }
     }
-    if (isset($_GET['logout'])) {
-        session_destroy();
-        header('Location: login_register.php'); 
-        exit;
+
+    if (isset($_GET['logout'])) { // jika ada parameter logout
+        session_destroy();// hapus session
+        header('Location: login_register.php'); // redirect ke halaman login
+        exit; // keluar dari script
     }    
 }
 
-// Get latest user data
-$user_query = mysqli_query($conn, "SELECT * FROM user WHERE id=".$user['id']);
-$current_user = mysqli_fetch_assoc($user_query);
+// ambil data user dari database
+$user_query = mysqli_query($conn, "SELECT * FROM user WHERE id=".$user['id']);// ambil data user dari database
+$current_user = mysqli_fetch_assoc($user_query);//  ambil data user dari query
 
-// Update session with latest data
-$_SESSION['user'] = $current_user;
+// Update session dengan data terbaru
+$_SESSION['user'] = $current_user;// update session dengan data terbaru
 ?>
 
 <!DOCTYPE html>
@@ -121,22 +130,23 @@ $_SESSION['user'] = $current_user;
     </div>
 
     <script>
-        // Show preview of selected image
-        document.getElementById('profilePictureInput').addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(event) {
-                    document.getElementById('profileImage').src = event.target.result;
-                    document.getElementById('submitBtn').style.display = 'block';
+        // Menampilkan tombol simpan hanya jika ada file yang dipilih
+        document.getElementById('profilePictureInput').addEventListener('change', function(e) { 
+            const file = e.target.files[0];// ambil file yang dipilih
+            
+            if (file) {// jika ada file
+                const reader = new FileReader();// buat FileReader
+                reader.onload = function(event) {// jika file sudah dibaca
+                    document.getElementById('profileImage').src = event.target.result;// set src gambar dengan hasil pembacaan
+                    document.getElementById('submitBtn').style.display = 'block';// tampilkan tombol simpan
                 }
-                reader.readAsDataURL(file);
+                reader.readAsDataURL(file);// baca file sebagai URL data
             }
         });
     </script>
 
 <script>
-      feather.replace();
+      feather.replace();// Mengganti ikon dengan feather icons
     </script>
 
 </body>
