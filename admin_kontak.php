@@ -23,7 +23,7 @@ $result = mysqli_query($conn, $query);
   </style>
 </head>
 <body>
-
+<a href="admin_halaman.php">back</a>
 <h2>Daftar Pesan dari Form Kontak</h2>
 
 <table>

@@ -25,6 +25,8 @@
 
  .navbar-nav a{
   color: white;
+  padding: auto;
+  margin: auto;
  }
 
 *{
@@ -52,11 +54,65 @@ body {
   box-shadow: 0 10px 10px 10px rgba(115,193,255 0.1);
   padding: 20px;
   position: relative;
+  transform: background 0.5s;
 }
 .profile-box img{
-  width: 100px;
+  width: 90px;
   position: absolute;
   top: 20px;
   right: 20px;
   border-radius: 4px;
+  transition: .5s;
+}
+.profile-box h4{
+  margin-top: 25px;
+  margin-bottom: 5px;
+  color: #2196f3;
+}
+.profile-box p{
+  text-align: center;
+  line-height: 24px;
+  color: #555;
+}
+small{
+  color: #555;
+}
+.social-box{
+  background: #2196f3;
+  margin: 60px auto 20px;
+  text-align: center;
+  border-radius: 3px;
+}
+.social-box .fa{
+  margin: 5px;
+  color: #fff;
+  cursor: pointer;
+}
+.team-row{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 85%;
+  margin: auto;
+}
+.profile-box img:hover{
+  width: 190px;
+}
+.profile-box:hover{
+  background: #2196f3;
+}
+.profile-box:hover h4{
+  color: #fff;
+}
+.profile-box:hover p{
+  color: #efefef;
+}
+.profile-box:hover small{
+  color: #efefef;
+}
+.profile-box:hover .social-box{
+  background: #fff;
+}
+.profile-box:hover .social-box .fa{
+  color: #2196f3;
 }

@@ -3,7 +3,7 @@ include 'koneksi.php';
 
 $result = $conn->query("SELECT * FROM produk");
 ?>
-
+<a href="admin_halaman.php">back</a>
 <h2>Kelola Produk</h2>
 <table border="1" cellpadding="10">
   <tr>

@@ -55,9 +55,11 @@
   </style>
 </head>
 <body>
+  <a href="admin_halaman.php">back</a>
   <div class="form-container">
     <h2>Tambah Produk Baru</h2>
     <form action="proses_tambah_produk.php" method="POST" enctype="multipart/form-data">
+  
       <div class="form-group">
         <label for="name">Nama Produk</label>
         <input type="text" name="name" id="name" required />
