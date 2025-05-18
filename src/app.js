@@ -106,6 +106,16 @@ document.addEventListener('alpine:init', () => {
 });
 
 
+// jadiin rupiah
+const rupiah = (number) => {
+  return new Intl.NumberFormat('id-ID', {
+    style: 'currency',
+    currency: 'IDR',
+    minimumFractionDigits: 0
+  }).format(number);
+};  
+
+
 // untuk data user di payment gateway
 document.addEventListener('alpine:init', () => {
   Alpine.data('checkoutForm', () => ({
@@ -143,12 +153,47 @@ form.addEventListener('keyup',function(){
   checkoutButton.classList.remove('disabled');
 });
 
+checkoutButton.addEventListener('click', async function (e) {
+  e.preventDefault();
 
-// jadiin rupiah
-const rupiah = (number) => {
-  return new Intl.NumberFormat('id-ID', {
-    style: 'currency',
-    currency: 'IDR',
-    minimumFractionDigits: 0
-  }).format(number);
-};
+  const formData = new FormData(form);
+  formData.append('total', Alpine.store('cart').total);
+  formData.append('items', JSON.stringify(Alpine.store('cart').items));
+
+  try {
+    const response = await fetch('payment/payment.php', {
+      method: 'POST',
+      body: formData,
+    });
+
+    const token = await response.text();
+    // console.log(token);
+    
+    window.snap.pay(token, {
+  onSuccess: function(result) {
+    console.log('Pembayaran sukses:', result);
+    // Kirim data ke backend buat simpan transaksi dan update stok
+    fetch('payment/update_stok.php', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ items: Alpine.store('cart').items })
+});
+
+  },
+  onPending: function(result) {
+    console.log('Menunggu pembayaran:', result);
+  },
+  onError: function(result) {
+    console.error('Pembayaran gagal:', result);
+  },
+  onClose: function() {
+    alert('Kamu menutup popup sebelum menyelesaikan pembayaran.');
+  }
+});
+
+  } catch (error) {
+    console.error(error.message);
+  }
+});
+
+
