@@ -146,7 +146,7 @@ $_SESSION['user'] = $current_user;// update session dengan data terbaru
     </script>
 
 <script>
-      feather.replace();// Mengganti ikon dengan feather icons
+      feather.replace();// Mengganti ikon dengan feather icons  
     </script>
 
 </body>

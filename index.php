@@ -23,8 +23,8 @@ else {// jika tidak ada session user
 }
 
 // notif
- if (isset($_GET['msg']) && $_GET['msg'] === 'noaccess'): ?>// jika ada parameter msg dan isinya noaccess
-<script>alert('Anda tidak memiliki akses ke halaman ini.');</script> // tampilkan pesan error
+ if (isset($_GET['msg']) && $_GET['msg'] === 'noaccess'): // jika ada parameter msg dan isinya noaccess ?>
+<script>alert('Anda tidak memiliki akses ke halaman ini.'); // tampilkan pesan error </script> 
 <?php endif; // tutup if
 
 ?> 
@@ -56,13 +56,13 @@ else {// jika tidak ada session user
     <!-- user data untuk json -->
      <!-- lempar ke JS -->
     <?php
-    if (session_status() === PHP_SESSION_NONE) {
-         session_start();
+    if (session_status() === PHP_SESSION_NONE) { // jika session belum dimulai
+         session_start();// mulai session
     }
-     $user = $_SESSION['user'] ?? null;
+     $user = $_SESSION['user'] ?? null;// ambil data user dari session jika tidak ada session user, set ke null
     ?>
     <script>
-      window.loggedInUser = <?= json_encode($user); ?>;
+      window.loggedInUser = <?= json_encode($user); ?>; // kirim data user ke JS
     </script>
 
     <!-- AlpineJS --> 

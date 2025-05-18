@@ -1,7 +1,7 @@
 <?php
 include 'koneksi.php';
 
-$result = $conn->query("SELECT * FROM produk");
+$result = $conn->query("SELECT * FROM produk");// Ambil semua data produk dari database
 ?>
 <a href="admin_halaman.php">back</a>
 <h2>Kelola Produk</h2>
@@ -13,7 +13,7 @@ $result = $conn->query("SELECT * FROM produk");
     <th>Gambar</th>
     <th>Aksi</th>
   </tr>
-  <?php while ($p = $result->fetch_assoc()): ?>
+  <?php while ($p = $result->fetch_assoc()): // Looping untuk menampilkan semua produk  ?> 
   <tr>
     <td><?= htmlspecialchars($p['nama']) ?></td>
     <td><?= number_format($p['harga']) ?></td>
