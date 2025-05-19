@@ -4,7 +4,7 @@ document.addEventListener('alpine:init', () => {
     items: [],
     async fetchProducts() {
       try {
-        const res = await fetch('get_produk.php');
+        const res = await fetch('../get_produk.php');
         const data = await res.json();
         this.items = data.map(item => ({
           ...item,
@@ -161,7 +161,7 @@ checkoutButton.addEventListener('click', async function (e) {
   formData.append('items', JSON.stringify(Alpine.store('cart').items));
 
   try {
-    const response = await fetch('payment/payment.php', {
+    const response = await fetch('../payment/payment.php', {
       method: 'POST',
       body: formData,
     });
@@ -173,7 +173,7 @@ checkoutButton.addEventListener('click', async function (e) {
   onSuccess: function(result) {
     console.log('Pembayaran sukses:', result);
     // Kirim data ke backend buat simpan transaksi dan update stok
-    fetch('payment/update_stok.php', {
+    fetch('../payment/update_stok.php', {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({ items: Alpine.store('cart').items })
