@@ -4,7 +4,7 @@ session_start();
 // Cek apakah pengguna sudah login dan memiliki peran admin
 
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-    header("Location: ../index.php?msg=noaccess");
+    header("Location: ../user/index.php?msg=noaccess");
     exit;
 }
 
@@ -19,7 +19,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
 </head>
 <body>
     <div class="navbar">
-       <a href="../index.php"class="logo"> Admin_<span>Kora</span></a>
+       <a href="../user/index.php"class="logo"> Admin_<span>Kora</span></a>
 
         <div class="navbar-nav">
             <a href="admin_kontak.php">pesan</a>
