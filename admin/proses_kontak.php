@@ -10,10 +10,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { // Mengecek apakah form di-submit da
             VALUES ('$nama', '$email', '$pesan')";// Query untuk menyimpan data ke database
 
     if (mysqli_query($conn, $sql)) {// Jika berhasil menyimpan data
-        echo "<script>alert('Pesan berhasil dikirim!'); window.location.href='index.php#contact';</script>";// Menggunakan alert untuk memberi tahu pengguna dan redirect ke halaman index
+        echo "<script>alert('Pesan berhasil dikirim!'); window.location.href='../user/index.php#contact';</script>";// Menggunakan alert untuk memberi tahu pengguna dan redirect ke halaman index
 
     } else {// Jika gagal menyimpan data
-        echo "<script>alert('Gagal mengirim pesan!'); window.location.href='index.php#contact';</script>";// Menggunakan alert untuk memberi tahu pengguna dan redirect ke halaman index
+        echo "<script>alert('Gagal mengirim pesan!'); window.location.href='..user/index.php#contact';</script>";// Menggunakan alert untuk memberi tahu pengguna dan redirect ke halaman index
     }
 }
 ?>

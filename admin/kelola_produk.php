@@ -18,7 +18,7 @@ $result = $conn->query("SELECT * FROM produk");// Ambil semua data produk dari d
     <td><?= htmlspecialchars($p['nama']) ?></td>
     <td><?= number_format($p['harga']) ?></td>
     <td><?= $p['stok'] ?></td>
-    <td><img src="img/menu/<?= htmlspecialchars($p['gambar']) ?>" width="80" /></td>
+    <td><img src="../img/menu/<?= htmlspecialchars($p['gambar']) ?>" width="80" /></td>
     <td>
       <form method="POST" action="proses_hapus_produk.php" onsubmit="return confirm('Yakin ingin menghapus produk ini?');">
         <input type="hidden" name="id" value="<?= $p['id'] ?>">

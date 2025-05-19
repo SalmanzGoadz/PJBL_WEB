@@ -30,7 +30,7 @@ if (move_uploaded_file($tmp, $pathGambar)) {// Jika berhasil memindahkan file bu
   $stmt->bind_param("sissis", $nama, $harga, $gambar, $desc, $stok, $jenis);// Menggunakan bind_param untuk mengikat parameter ke query
 
   if ($stmt->execute()) {// Jika berhasil
-    echo "<script>alert('Produk berhasil ditambahkan!'); window.location.href='index.php';</script>";// Menggunakan alert untuk memberi tahu pengguna dan redirect ke halaman index
+    echo "<script>alert('Produk berhasil ditambahkan!'); window.location.href='../index.php';</script>";// Menggunakan alert untuk memberi tahu pengguna dan redirect ke halaman index
   } else {// Jika gagal
     echo "Gagal menyimpan ke database: " . $conn->error;  // Menggunakan error dari koneksi untuk memberi tahu pengguna
   }

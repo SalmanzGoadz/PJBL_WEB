@@ -19,7 +19,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
 </head>
 <body>
     <div class="navbar">
-       <a href="index.php"class="logo"> Admin_<span>Kora</span></a>
+       <a href="../index.php"class="logo"> Admin_<span>Kora</span></a>
 
         <div class="navbar-nav">
             <a href="admin_kontak.php">pesan</a>
@@ -37,7 +37,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
         <div class= "profile-box">
             <h4>Salman</h4>
             <small>X PPLG 1 / 31</small>
-            <img src="img/admin/salman.jpg">
+            <img src="../img/admin/salman.jpg">
             <div class="social-box">
                 <a href="https://github.com/SalmanzGoadz">
                 <i class="fa fa-github"></i>
@@ -54,7 +54,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
         <div class= "profile-box">
             <h4>Fadly</h4>
             <small>X PPLG 1 / 13</small>
-            <img src="img/admin/fadly.jpg">
+            <img src="../img/admin/fadly.jpg">
             <div class="social-box">
                 <a href="https://github.com/fadlyy-sta">
                 <i class="fa fa-github"></i>
@@ -69,7 +69,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
         <div class= "profile-box">
             <h4>Raihan</h4>
             <small>X PPLG 1 / 26</small>
-            <img src="img/admin/raihan.jpg">
+            <img src="../img/admin/raihan.jpg">
             <div class="social-box">
                 <a href="">
                 <i class="fa fa-github"></i>
@@ -84,7 +84,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
         <div class= "profile-box">
             <h4>Rakha</h4>
             <small>X PPLG 1 / 27</small>
-            <img src="img/admin/raka.jpg">
+            <img src="../img/admin/raka.jpg">
             <div class="social-box">
                <a href="https://github.com/BlueTedV">
                 <i class="fa fa-github"></i>
@@ -99,7 +99,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
         <div class= "profile-box">
             <h4>Dirdadivina</h4>
             <small>X PPLG 1 / 11 </small>
-            <img src="img/admin/dirda.jpg">
+            <img src="../img/admin/dirda.jpg">
             <div class="social-box">
                 <a href="">
                 <i class="fa fa-github"></i>
@@ -114,7 +114,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
         <div class= "profile-box">
             <h4>Najwa</h4>
             <small>X PPLG 1 / 22</small>
-            <img src="img/admin/awa.jpg">
+            <img src="../img/admin/awa.jpg">
             <div class="social-box">
               <a href="">
                 <i class="fa fa-github"></i>
