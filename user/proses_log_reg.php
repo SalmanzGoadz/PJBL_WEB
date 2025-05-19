@@ -48,7 +48,7 @@ if (isset($_POST['signIn'])) {
 
         // Cek role dan redirect
         if ($row['role'] === 'admin') {// jika role admin
-            header("Location: admin/admin_halaman.php");// redirect ke halaman admin
+            header("Location: ../admin/admin_halaman.php");// redirect ke halaman admin
         } else {// jika role user
             header("Location: index.php");// redirect ke halaman user
         }
