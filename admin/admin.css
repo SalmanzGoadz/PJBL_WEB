@@ -24,7 +24,7 @@
   }
 
  .navbar-nav a{
-  color: white;
+  color: rgb(255, 255, 255);
   padding: auto;
   margin: auto;
  }
@@ -67,7 +67,7 @@ body {
 .profile-box h4{
   margin-top: 25px;
   margin-bottom: 5px;
-  color: #2196f3;
+  color: #795548;
 }
 .profile-box p{
   text-align: center;
@@ -78,7 +78,7 @@ small{
   color: #555;
 }
 .social-box{
-  background: #2196f3;
+  background: #795548;
   margin: 60px auto 20px;
   text-align: center;
   border-radius: 3px;
@@ -99,7 +99,7 @@ small{
   width: 190px;
 }
 .profile-box:hover{
-  background: #2196f3;
+  background: #795548;
 }
 .profile-box:hover h4{
   color: #fff;
@@ -114,5 +114,5 @@ small{
   background: #fff;
 }
 .profile-box:hover .social-box .fa{
-  color: #2196f3;
+  color: #795548;
 }

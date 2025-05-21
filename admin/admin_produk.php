@@ -7,50 +7,92 @@
   <title>Tambah Produk</title>
   <style>
     body {
-      padding: 2rem;
-      font-family: sans-serif;
+      background: linear-gradient(to bottom right, #f8f4f0, #e6d3c7);
+      margin: 0;
+      padding: 0;
+      color: #f5f5dc;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
+
+    a {
+      display: inline-block;
+      background-color: #b6895b;
+      border-radius: 5px;
+      padding: 10px;
+      margin: 10px;
+      color: #f0e6dc;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
     .form-container {
       max-width: 600px;
-      margin: auto;
-      background: #f9f9f9;
-      padding: 2rem;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      margin: 40px auto;
+      background: #b6895b;
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 12px 25px rgba(0,0,0,0.3);
     }
+
     .form-container h2 {
-      margin-bottom: 1rem;
+      text-align: center;
+      color: #fff8f0;
+      margin-bottom: 30px;
+      font-size: 28px;
+      font-weight: bold;
     }
+
     .form-group {
-      margin-bottom: 1rem;
+      margin-bottom: 20px;
     }
+
     .form-group label {
       display: block;
-      margin-bottom: 0.5rem;
+      margin-bottom: 8px;
+      font-weight: bold;
+      color: #fff8f0;
     }
+
     .form-group input,
     .form-group textarea {
       width: 100%;
-      padding: 0.5rem;
-      border-radius: 5px;
-      border: 1px solid #ccc;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #a1887f;
+      background-color: #fff8f0;
+      font-size: 16px;
+      color: #4e342e;
     }
 
-    .form-radio{
-      padding: 2px;;
-      margin: 2px;;
+    .form-radio {
+      margin-bottom: 20px;
     }
+
+    .form-radio label {
+      margin-right: 15px;
+      color: #fff8f0;
+      font-weight: 500;
+    }
+
+    .form-radio input {
+      margin-right: 6px;
+    }
+
     .btn-submit {
-      background-color: #16a34a;
+      width: 100%;
+      background-color:rgb(158, 102, 82);
       color: white;
-      padding: 0.7rem 1.5rem;
+      padding: 12px;
       border: none;
-      border-radius: 5px;
+      border-radius: 8px;
       font-weight: bold;
+      font-size: 16px;
       cursor: pointer;
+      transition: background-color 0.3s ease;
     }
+
     .btn-submit:hover {
-      background-color: #15803d;
+      background-color: #b6895b;
     }
   </style>
 </head>
