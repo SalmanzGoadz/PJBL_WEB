@@ -395,9 +395,9 @@ else {// jika tidak ada session user
         <p>
           Created by
           <a
-            href=""
+            href="team.php"
             >X PPLG 1 TEAM  & </a
-          ><a href="">KoRa</a>. &copy;
+          ><a href="team.php">KoRa</a>. &copy;
           2024.
         </p>
       </div>
