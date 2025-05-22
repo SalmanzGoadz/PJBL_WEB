@@ -409,7 +409,7 @@ else {// jika tidak ada session user
       id="item-detail-modal"
       x-data
       x-show="$store.modal.show"
-      style="display: none;"
+      x-transition
       @keydown.escape.window="$store.modal.close()"
     >
       <div class="modal-container">
@@ -436,7 +436,7 @@ else {// jika tidak ada session user
         </template>
       </div>
     </div>
-    <!-- Modal Box Item Detail End -->
+    <!-- Modal Box Item Detail End -->  
 
     <!-- Feathers icons-->
     <script>
