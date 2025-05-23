@@ -259,6 +259,35 @@ else {// jika tidak ada session user
           <h3 class="menu-card-title">- Singkong Keju -</h3>
           <p class="menu-card-price">IDR 15K</p>
         </div>
+        <div class="menu-card">
+          <img src="../img/menu/Americano.jpg" alt="sing" class="menu-card-img" />
+          <h3 class="menu-card-title">- Americano -</h3>
+          <p class="menu-card-price">IDR 10K</p>
+        </div>
+        <div class="menu-card">
+          <img src="../img/menu/roti.jpg" alt="sing" class="menu-card-img" />
+          <h3 class="menu-card-title">-Roti Bakar -</h3>
+          <p class="menu-card-price">IDR 12K</p>
+        </div>
+        <div class="menu-card">
+          <img src="../img/menu/Latte.jpg" alt="sing" class="menu-card-img" />
+          <h3 class="menu-card-title">- Latte -</h3>
+          <p class="menu-card-price">IDR 12K</p>
+        </div>
+         <div class="menu-card">
+          <img src="../img/menu/tahuu.jpg" alt="sing" class="menu-card-img" />
+          <h3 class="menu-card-title">- Tahu Pedas Asin -</h3>
+          <p class="menu-card-price">IDR 12K</p>
+        </div>
+         <div class="menu-card">
+          <img src="../img/menu/geprek.jpg" alt="sing" class="menu-card-img" />
+          <h3 class="menu-card-title">- Geprek -</h3>
+          <p class="menu-card-price">IDR 15K</p>
+        </div>
+        <div class="menu-card">
+          <img src="../img/menu/Espreso.jpg" alt="sing" class="menu-card-img" />
+          <h3 class="menu-card-title">- Espreso -</h3>
+          <p class="menu-card-price">IDR 12K</p>
       </div>
     </section>
     <!-- Menu Section end-->
@@ -413,7 +442,7 @@ else {// jika tidak ada session user
       @keydown.escape.window="$store.modal.close()"
     >
       <div class="modal-container">
-        <a href="#" class="close-icon" @click.prevent="$store.modal.close()"><i data-feather="x"></i></a>
+        <a href="#" class="close-icon" @click.prevent="$store.modal.close()"><i data-feather=""></i></a>
         <template x-if="$store.modal.product">
           <div class="modal-content">
             <img :src="`../img/menu/${$store.modal.product.img}`" :alt="$store.modal.product.name" />

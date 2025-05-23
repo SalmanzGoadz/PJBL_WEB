@@ -30,6 +30,7 @@
 
     
     <div class="team-photos">
+     
       <img src="../img/admin/salman.jpg" alt="Anggota Tim 1" onclick="showModal(this)" data-name="Salman" data-feature="Leader team dan fullstack developer">
       <img src="../img/admin/fadly.jpg" alt="Anggota Tim 2" onclick="showModal(this)" data-name="Fadly" data-feature="Desain Data System dan Front End Dev (login dan register)">
       <img src="../img/admin/awa.jpg" alt="Anggota Tim 3" onclick="showModal(this)" data-name="Awa" data-feature="Front End Dev (admin pesan) dan UI/UX">
@@ -38,10 +39,13 @@
       <img src="../img/admin/raihan.jpg" alt="Anggota Tim 6" onclick="showModal(this)" data-name="Raihan" data-feature="Desain Data System dan Front End Dev (admin dashboard)">
     </div>
   </section>
-
+ 
+ 
   <section class="team-section">
-    <div class="team-container">
-      <div class="team-desc">
+  <div class="team-container">
+    <div class="team-photo">
+      <img src="../img/admin/Mas alan.jpg" alt="Foto owner" onclick="showModal(this)" data-name="Mas Alan" data-feature="Owner(PRESIDEN KORA)">
+    </div>
         <h3>KORA Team</h3>
         <div class="desc-box">
           <p>
@@ -55,27 +59,8 @@
       </div>
     </div>
   </section>
+    <script src="team.js" defer></script>
 
-  <script>
-    function goBack() {
-      window.history.back();
-    }
-
-    function showModal(imgElement) {
-      const modal = document.getElementById("imageModal");
-      const modalImg = document.getElementById("modalImage");
-      const memberName = document.getElementById("memberName");
-      const memberFeature = document.getElementById("memberFeature");
-
-      modal.style.display = "block";
-      modalImg.src = imgElement.src;
-      memberName.textContent = imgElement.getAttribute("data-name");
-      memberFeature.textContent = imgElement.getAttribute("data-feature");
-    }
-
-    function closeModal() {
-      document.getElementById("imageModal").style.display = "none";
-    }
-  </script>
+  
 </body>
 </html>
