@@ -48,11 +48,17 @@
     </div>
         <h3>KORA Team</h3>
         <div class="desc-box">
-          <p>
+          <p class="slide-text">
             Kami adalah tim yang terdiri dari 6 orang siswa yang memiliki semangat dan dedikasi tinggi dalam mengembangkan aplikasi ini. Setiap anggota tim memiliki keahlian dan peran masing-masing, dan kami bekerja sama untuk menciptakan pengalaman terbaik bagi pengguna. Kami percaya bahwa kolaborasi dan inovasi adalah kunci untuk mencapai kesuksesan dalam proyek ini.
           </p>
+          <p class="quote">--Team 1 X PPLG 1--</p>
+          <p class="slide-text">
+           Sebagai Presiden Kora (Kopi Rakyat), saya bukan pembuat kode atau tukang desain, tapi saya orang di balik layar yang percaya penuh pada potensi generasi muda.
+           Saya mempercayakan pengembangan web ini kepada tim hebat dari X PPLG 1 enam siswa luar biasa dengan semangat, ide, dan energi yang kadang lebih ngopi dari saya.
+           Tugas saya? Kasih visi, semangatin tim, dan tentu saja... nyicip hasil akhir sambil ngopi.
+           Karena saya percaya, mimpi besar bisa dimulai dari warung kecil, asal dikerjakan bareng dengan hati dan KORA. 
           <p class="quote">
-            Team 1 X PPLG 1
+           --Presiden Kora--
             <img src="../img/kora.jpg" alt="Logo KORA" style="height:40px; width:auto; vertical-align:middle; margin-left:8px;">
           </p>
         </div>
