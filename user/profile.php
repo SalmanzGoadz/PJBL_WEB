@@ -92,7 +92,7 @@ $_SESSION['user'] = $current_user;// update session dengan data terbaru
 
     <div class="profile-container">
         <div class="header">
-            <a href="index.php"><i class="fas fa-house"></i></a>
+            <a href="index.php"><i class="fas fa-arrow-left"></i></a>
             <h2>Profil</h2>
         </div>
         
