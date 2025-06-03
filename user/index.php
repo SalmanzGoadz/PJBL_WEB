@@ -276,7 +276,7 @@ else {// jika tidak ada session user
         </div>
          <div class="menu-card">
           <img src="../img/menu/tahuu.jpg" alt="sing" class="menu-card-img" />
-          <h3 class="menu-card-title">- Tahu Pedas Asin -</h3>
+          <h3 class="menu-card-title">- Tahu Cabe Garam -</h3>
           <p class="menu-card-price">IDR 12K</p>
         </div>
          <div class="menu-card">

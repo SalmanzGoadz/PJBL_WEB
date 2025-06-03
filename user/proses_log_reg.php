@@ -54,7 +54,7 @@ if (isset($_POST['signIn'])) {
         }
         exit();// keluar dari script
     } else {
-        echo "Not Found, Incorrect Email or Password";// tampilkan pesan error
+       echo "<script>alert('Email atau Password salah'); window.location.href='login_register.php';</script>";// tampilkan pesan error
     }
 }
 ?>
