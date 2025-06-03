@@ -1,4 +1,7 @@
-
+<?php
+$login_error = isset($_GET['login_error']) ? $_GET['login_error'] : '';
+$old_email = isset($_GET['email']) ? htmlspecialchars($_GET['email']) : '';
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -51,10 +54,13 @@
 
     <div class="container" id="signIn">
         <h1 class="form-title">Sign In</h1>
+        <?php if ($login_error): ?>
+            <script>alert('Email atau Password salah');</script>
+        <?php endif; ?>
         <form method="post" action="proses_log_reg.php">
           <div class="input-group">
               <i class="fas fa-envelope"></i>
-              <input type="email" name="email" id="email" placeholder="Email" required>
+              <input type="email" name="email" id="email" placeholder="Email" required value="<?php echo $old_email; ?>">
               <label for="email">Email</label>
           </div>
           <div class="input-group">
@@ -62,9 +68,6 @@
               <input type="password" name="password" id="password" placeholder="Password" required>
               <label for="password">Password</label>
           </div>
-          <!-- <p class="recover">
-            <a href="#">Recover Password</a>
-          </p> -->
          <input type="submit" class="btn" value="Sign In" name="signIn">
         </form>
        
@@ -77,3 +80,4 @@
       <script src="register.js"></script>
 </body>
 </html>
+
