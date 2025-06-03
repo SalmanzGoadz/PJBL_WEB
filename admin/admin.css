@@ -116,3 +116,106 @@ small{
 .profile-box:hover .social-box .fa{
   color: #795548;
 }
+
+/* Hamburger button styles */
+.navbar-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 2rem;
+  cursor: pointer;
+  margin-left: auto;
+  z-index: 10001;
+  transition: color 0.3s;
+}
+.navbar-toggle.active,
+.navbar-toggle:focus {
+  color: #b6895b;
+  outline: none;
+}
+
+/* Responsive styles for mobile */
+@media (max-width: 758px) {
+  .navbar {
+    /* Keep navbar sticky/fixed */
+    position: fixed;
+    flex-direction: row;
+    align-items: center;
+    padding: 1rem 4%;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+  }
+  .navbar-toggle {
+    display: block;
+  }
+  .navbar-nav {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background: rgba(34, 34, 34, 0.97);
+    position: absolute;
+    top: 60px;
+    left: 0;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+    padding: 1rem 0;
+    animation: dropdownFade 0.3s;
+  }
+  .navbar-nav.active {
+    display: flex;
+  }
+  .navbar-nav a {
+    color: #fff;
+    padding: 1rem 2rem;
+    margin: 0;
+    font-size: 1.1rem;
+    border-bottom: 1px solid #b6895b;
+    transition: background 0.2s, color 0.2s;
+  }
+  .navbar-nav a:last-child {
+    border-bottom: none;
+  }
+  .navbar-nav a:hover {
+    background: #b6895b;
+    color: #222;
+    border-radius: 6px;
+  }
+
+  /* Responsive styles for other elements */
+  .title-box {
+    margin: 80px auto 30px;
+    padding: 0 10px;
+  }
+  .team-row {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  .profile-box {
+    width: 90vw;
+    max-width: 350px;
+    height: auto;
+    margin-bottom: 20px;
+    padding-bottom: 30px;
+  }
+  .profile-box img {
+    position: static;
+    display: block;
+    margin: 0 auto 10px auto;
+    width: 70px;
+  }
+  .profile-box img:hover {
+    width: 120px;
+  }
+  .social-box {
+    margin: 30px auto 20px;
+  }
+}
+
+@keyframes dropdownFade {
+  from { opacity: 0; transform: translateY(-10px);}
+  to { opacity: 1; transform: translateY(0);}
+}

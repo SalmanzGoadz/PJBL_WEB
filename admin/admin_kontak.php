@@ -9,6 +9,7 @@ $result = mysqli_query($conn, $query);// Eksekusi query
 <html>
 <head>
   <title>Pesan Kontak</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -66,12 +67,39 @@ $result = mysqli_query($conn, $query);// Eksekusi query
       color: #4e342e;
       margin-bottom: 20px;
     }
+
+    /* Responsive styles */
+    @media (max-width: 700px) {
+      body {
+        padding: 8px;
+      }
+      h2 {
+        font-size: 1.2rem;
+      }
+      a {
+        font-size: 0.95rem;
+        padding: 6px 12px;
+      }
+      .table-responsive {
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      table {
+        min-width: 600px;
+        font-size: 0.95rem;
+      }
+      th, td {
+        padding: 8px 6px;
+      }
+    }
   </style>
 </head>
 <body>
 <a href="admin_halaman.php">back</a>
 <h2>Daftar Pesan dari Form Kontak</h2>
 
+<div class="table-responsive">
 <table>
   <tr>
     <th>No</th>
@@ -94,6 +122,7 @@ $result = mysqli_query($conn, $query);// Eksekusi query
   }
   ?>
 </table>
+</div>
 
 </body>
 </html>

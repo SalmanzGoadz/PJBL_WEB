@@ -19,13 +19,14 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
 </head>
 <body>
     <div class="navbar">
-       <a href="../user/index.php"class="logo"> Admin_<span>Kora</span></a>
-
-        <div class="navbar-nav">
+        <a href="../user/index.php" class="logo"> Admin_<span>Kora</span></a>
+        <button class="navbar-toggle" id="navbarToggle" aria-label="Toggle navigation">
+            <i class="fa fa-bars"></i>
+        </button>
+        <div class="navbar-nav" id="navbarNav">
             <a href="admin_kontak.php">pesan</a>
             <a href="admin_produk.php">tambahproduk</a>
             <a href="kelola_produk.php">kelolaproduk</a>
-
         </div>
     </div>
 
@@ -132,5 +133,11 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
         <img src="" alt="">
     </div>
 
+    <script>
+    document.getElementById('navbarToggle').addEventListener('click', function() {
+        document.getElementById('navbarNav').classList.toggle('active');
+        this.classList.toggle('active');
+    });
+    </script>
 </body>
 </html>
