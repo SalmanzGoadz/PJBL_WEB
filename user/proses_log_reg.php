@@ -14,7 +14,7 @@ if (isset($_POST['signUp'])) {
     $checkEmail = "SELECT * FROM user WHERE email='$email'"; // query untuk cek email
     $result = $conn->query($checkEmail); // eksekusi query
     if ($result->num_rows > 0) { // jika email sudah ada
-        echo "Email Address Already Exists!"; // tampilkan pesan
+        echo "<script>alert('Email Address Already Exists!');history.back();</script>;";// tampilkan pesan
     } else { // jika email belum ada
         // Insert data ke database
 
@@ -32,27 +32,29 @@ if (isset($_POST['signUp'])) {
 
 // Proses login
 if (isset($_POST['signIn'])) { 
-    $email = $_POST['email'];
-    $password = md5($_POST['password']);
+    $email = $_POST['email']; // ambil email
+    $password = md5($_POST['password']);// ambil password dan hashing
 
-    $sql = "SELECT * FROM user WHERE email='$email' AND password='$password'";
-    $result = $conn->query($sql);
-    if ($result->num_rows > 0) {
+    $sql = "SELECT * FROM user WHERE email='$email' AND password='$password'"; // query untuk cek email dan password
+    $result = $conn->query($sql);// eksekusi query
+    if ($result->num_rows > 0) {// jika ada hasil
+        
+        // Set session
         session_start();
-        $row = $result->fetch_assoc();
-        $_SESSION['user'] = $row;
-        $_SESSION['role'] = $row['role'];
+        $row = $result->fetch_assoc();// ambil data user
+        $_SESSION['user'] = $row;// simpan data user ke session
+        $_SESSION['role'] = $row['role']; // tambahkan role ke session buat admin
 
-        if ($row['role'] === 'admin') {
-            header("Location: ../admin/admin_halaman.php");
-        } else {
-            header("Location: index.php");
+
+        // Cek role dan redirect
+        if ($row['role'] === 'admin') {// jika role admin
+            header("Location: ../admin/admin_halaman.php");// redirect ke halaman admin
+        } else {// jika role user
+            header("Location: index.php");// redirect ke halaman user
         }
-        exit();
+        exit();// keluar dari script
     } else {
-        // Instead of alert+redirect, reload login_register.php with email as GET parameter
-        header("Location: login_register.php?login_error=1&email=" . urlencode($email));
-        exit();
+     echo "<script>alert('Email atau Password salah'); history.back(); </script>";// tampilkan pesan error
     }
 }
 ?>
