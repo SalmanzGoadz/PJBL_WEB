@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 15, 2025 at 12:32 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Waktu pembuatan: 03 Jun 2025 pada 15.34
+-- Versi server: 10.4.32-MariaDB
+-- Versi PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pesan`
+-- Struktur dari tabel `pesan`
 --
 
 CREATE TABLE `pesan` (
@@ -36,7 +36,7 @@ CREATE TABLE `pesan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `pesan`
+-- Dumping data untuk tabel `pesan`
 --
 
 INSERT INTO `pesan` (`id`, `nama`, `email`, `pesan`, `tanggal`) VALUES
@@ -48,12 +48,12 @@ INSERT INTO `pesan` (`id`, `nama`, `email`, `pesan`, `tanggal`) VALUES
 (6, 'Salman_Dev', 'salmandwikiseptiyan@gmail.com', 'test ga jadi ngerapiin', '2025-05-08 22:33:35'),
 (7, 'Salman_Dev', 'salmandwikis@gmail.com', 'Test finallll DL mepet alhamdulilah selesai', '2025-05-13 18:33:26'),
 (8, 'Salman_Dev', 'salmandwikiseptiyan@gmail.com', 'Test finallll DL mepet alhamdulilah selesai', '2025-05-14 10:57:55'),
-(9, '', '', '', '2025-05-14 14:31:32');
+(9, 'Rakha', 'asdf@asdf', 'Fix error yang ngk guna + responsif buat hp', '2025-06-03 20:39:21');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `produk`
+-- Struktur dari tabel `produk`
 --
 
 CREATE TABLE `produk` (
@@ -68,7 +68,7 @@ CREATE TABLE `produk` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `produk`
+-- Dumping data untuk tabel `produk`
 --
 
 INSERT INTO `produk` (`id`, `nama`, `harga`, `gambar`, `deskripsi`, `created_at`, `stok`, `jenis`) VALUES
@@ -82,7 +82,7 @@ INSERT INTO `produk` (`id`, `nama`, `harga`, `gambar`, `deskripsi`, `created_at`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Struktur dari tabel `user`
 --
 
 CREATE TABLE `user` (
@@ -97,57 +97,58 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `user`
+-- Dumping data untuk tabel `user`
 --
 
 INSERT INTO `user` (`id`, `frisName`, `lastName`, `no_telpon`, `email`, `password`, `profile_picture`, `role`) VALUES
 (1, 'admin', 'admin1', '0', 'salmandwikiseptiyan@gmail.com', '0192023a7bbd73250516f069df18b500', 'uploads/profile_1.jpg', 'admin'),
 (10, 'Salman', 'user', '085800658548', 'salmandwikis@gmail.com', '202cb962ac59075b964b07152d234b70', 'uploads/profile_10.jpg', 'user'),
-(11, 'Ren', 'Dyzt', '088803954887', 'raihanadityap01@gmail.com', 'df94a9007bdcdca20b15db850a80e572', 'uploads/profile_11.jpg', 'user');
+(11, 'Ren', 'Dyzt', '088803954887', 'raihanadityap01@gmail.com', 'df94a9007bdcdca20b15db850a80e572', 'uploads/profile_11.jpg', 'user'),
+(12, 'pw =', 'asdf', '123456789098765432', 'asdf@asdf', '912ec803b2ce49e4a541068d495ab570', 'uploads/profile_12.jpg', 'admin');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `pesan`
+-- Indeks untuk tabel `pesan`
 --
 ALTER TABLE `pesan`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `produk`
+-- Indeks untuk tabel `produk`
 --
 ALTER TABLE `produk`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `user`
+-- Indeks untuk tabel `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `pesan`
+-- AUTO_INCREMENT untuk tabel `pesan`
 --
 ALTER TABLE `pesan`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT for table `produk`
+-- AUTO_INCREMENT untuk tabel `produk`
 --
 ALTER TABLE `produk`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT for table `user`
+-- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
